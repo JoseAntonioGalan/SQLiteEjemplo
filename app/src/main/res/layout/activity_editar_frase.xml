@@ -48,6 +48,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEditarFrase" />
 
+    <EditText
+        android:id="@+id/etEditarFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/txtHintAutor"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarAutor" />
+
     <Button
         android:id="@+id/btnGuardarCambiosFrase"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -58,7 +71,7 @@
         android:layout_marginRight="200dp"
         android:text="@string/txtBtnGuardar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEditarAutor" />
+        app:layout_constraintTop_toBottomOf="@+id/etEditarFecha" />
 
     <Button
         android:id="@+id/btnCancelarEdicionFrase"
@@ -74,6 +87,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toEndOf="@+id/btnGuardarCambiosFrase"
-        app:layout_constraintTop_toBottomOf="@+id/etEditarAutor" />
+        app:layout_constraintTop_toBottomOf="@+id/etEditarFecha" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

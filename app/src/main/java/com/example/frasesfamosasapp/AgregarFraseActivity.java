@@ -14,7 +14,7 @@ import com.example.frasesfamosasapp.modelos.FraseFamosa;
 public class AgregarFraseActivity extends AppCompatActivity {
 
     private Button btnAgregarFrase, btnCancelarNuevaFrase;
-    private EditText etTexto, etAutor;
+    private EditText etTexto, etAutor, etFecha;
     private FrasesController frasesController;
 
     @Override
@@ -25,6 +25,7 @@ public class AgregarFraseActivity extends AppCompatActivity {
 // Instanciar vistas
         etTexto = findViewById(R.id.txtTexto);
         etAutor = findViewById(R.id.txtAutor);
+        etFecha = findViewById(R.id.txtFecha);
         btnAgregarFrase = findViewById(R.id.btnAgregarFrase);
         btnCancelarNuevaFrase = findViewById(R.id.btnCancelarNuevaFrase);
 // Crear el controlador
@@ -37,8 +38,10 @@ public class AgregarFraseActivity extends AppCompatActivity {
 // Resetear errores a ambos
                 etTexto.setError(null);
                 etAutor.setError(null);
+                etFecha.setError(null);
                 String texto = etTexto.getText().toString(),
-                        autor = etAutor.getText().toString();
+                        autor = etAutor.getText().toString(),
+                        fecha = etFecha.getText().toString();
                 if ("".equals(texto)) {
                     etTexto.setError("Escribe el texto de la frase");
                     etTexto.requestFocus();
@@ -49,9 +52,14 @@ public class AgregarFraseActivity extends AppCompatActivity {
                     etAutor.requestFocus();
                     return;
                 }
+                if ("".equals(fecha)) {
+                    etFecha.setError("Escribe el autor de la frase");
+                    etFecha.requestFocus();
+                    return;
+                }
 
 // Ya pasó la validación
-                FraseFamosa nuevaFrase = new FraseFamosa(texto, autor);
+                FraseFamosa nuevaFrase = new FraseFamosa(texto, autor, fecha);
                 long id = frasesController.nuevaFrase(nuevaFrase);
                 if (id == -1) {
 // De alguna manera ocurrió un error

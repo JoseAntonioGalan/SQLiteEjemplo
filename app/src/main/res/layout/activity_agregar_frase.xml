@@ -33,6 +33,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtTexto" />
 
+    <EditText
+        android:id="@+id/txtFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="@string/txtHintAutor"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtAutor" />
+
     <Button
         android:id="@+id/btnAgregarFrase"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -43,7 +56,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/txtBtnGuardar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAutor" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFecha" />
 
     <Button
         android:id="@+id/btnCancelarNuevaFrase"
@@ -58,6 +71,6 @@
         style="@style/Widget.AppCompat.Button.Colored"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnAgregarFrase"
-        app:layout_constraintTop_toBottomOf="@+id/txtAutor" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFecha" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@ import com.example.frasesfamosasapp.controllers.FrasesController;
 import com.example.frasesfamosasapp.modelos.FraseFamosa;
 
 public class EditarFraseActivity extends AppCompatActivity {
-    private EditText editarFrase, editarAutor;
+    private EditText editarFrase, editarAutor, editarFecha;
     private Button btnGuardarCambios, btnCancelarEdicion;
     private FraseFamosa frase;//La frase que vamos a estar editando
     private FrasesController frasesController;
@@ -37,11 +37,13 @@ public class EditarFraseActivity extends AppCompatActivity {
         long idFrase = extras.getLong("idFrase");
         String textoFrase = extras.getString("textoFrase");
         String autorFrase = extras.getString("autorFrase");
-        frase = new FraseFamosa(textoFrase, autorFrase, idFrase);
+        String fechaFrase = extras.getString("fechaFrase");
+        frase = new FraseFamosa(textoFrase, autorFrase, idFrase, fechaFrase );
 
 // Ahora declaramos las vistas
         editarFrase = findViewById(R.id.etEditarFrase);
         editarAutor = findViewById(R.id.etEditarAutor);
+        editarFecha = findViewById(R.id.etEditarFecha);
         btnCancelarEdicion = findViewById(R.id.btnCancelarEdicionFrase);
         btnGuardarCambios = findViewById(R.id.btnGuardarCambiosFrase);
 
@@ -49,6 +51,7 @@ public class EditarFraseActivity extends AppCompatActivity {
 // Rellenar los EditText con los datos de la frase
         editarAutor.setText(frase.getAutor());
         editarFrase.setText(frase.getTexto());
+        editarFecha.setText(frase.getFecha());
 
 // Listener del click del botón para salir, simplemente cierra la actividad
         btnCancelarEdicion.setOnClickListener(new View.OnClickListener() {
@@ -65,10 +68,12 @@ public class EditarFraseActivity extends AppCompatActivity {
 // Remover previos errores si existen
                 editarFrase.setError(null);
                 editarAutor.setError(null);
+                editarFecha.setError(null);
 // Crear la frase con los nuevos cambios pero ponerle
 // el id de la anterior
                 String nuevoTexto = editarFrase.getText().toString();
                 String nuevoAutor = editarAutor.getText().toString();
+                String nuevaFecha = editarFecha.getText().toString();
                 if (nuevoTexto.isEmpty()) {
                     editarFrase.setError("Escribe el texto");
                     editarFrase.requestFocus();
@@ -79,9 +84,14 @@ public class EditarFraseActivity extends AppCompatActivity {
                     editarAutor.requestFocus();
                     return;
                 }
+                if (nuevaFecha.isEmpty()) {
+                    editarFecha.setError("Escribe el autor");
+                    editarFecha.requestFocus();
+                    return;
+                }
 // Si llegamos hasta aquí es porque los datos ya están validados
                 FraseFamosa fraseConNuevosCambios = new FraseFamosa(nuevoTexto,
-                        nuevoAutor, frase.getId());
+                        nuevoAutor, frase.getId(), nuevaFecha);
                 int filasModificadas = frasesController.guardarCambios(fraseConNuevosCambios);
                 if (filasModificadas != 1)
                 {

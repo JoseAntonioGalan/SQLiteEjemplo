@@ -39,9 +39,11 @@ class AdaptadorFrases extends RecyclerView.Adapter<AdaptadorFrases.MyViewHolder>
         // Obtener los datos de la lista
         String textoFrase = frase.getTexto();
         String autorFrase = frase.getAutor();
+        String fechaFrase = frase.getFecha();
         // Y poner a los TextView los datos con setText
         myViewHolder.texto.setText(textoFrase);
         myViewHolder.autor.setText(autorFrase);
+        myViewHolder.fecha.setText(fechaFrase);
     }
 
     @Override
@@ -50,12 +52,13 @@ class AdaptadorFrases extends RecyclerView.Adapter<AdaptadorFrases.MyViewHolder>
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView texto, autor;
+        TextView texto, autor, fecha;
 
         MyViewHolder(View itemView) {
             super(itemView);
             this.texto = itemView.findViewById(R.id.txtFrase);
             this.autor = itemView.findViewById(R.id.txtAutor);
+            this.fecha = itemView.findViewById(R.id.txtFecha);
         }
     }
 }

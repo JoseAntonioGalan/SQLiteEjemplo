@@ -29,6 +29,7 @@ public class FrasesController {
         ContentValues valoresParaInsertar = new ContentValues();
         valoresParaInsertar.put("texto", frase.getTexto());
         valoresParaInsertar.put("autor", frase.getAutor());
+        valoresParaInsertar.put("fecha", frase.getFecha());
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 
@@ -37,6 +38,7 @@ public class FrasesController {
         ContentValues valoresParaActualizar = new ContentValues();
         valoresParaActualizar.put("texto", fraseEditada.getTexto());
         valoresParaActualizar.put("autor", fraseEditada.getAutor());
+        valoresParaActualizar.put("fecha", fraseEditada.getFecha());
         // where id...
         String campoParaActualizar = "id = ?";
         // ... = idFrase
@@ -49,7 +51,7 @@ public class FrasesController {
         // readable porque no vamos a modificar, solamente leer
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getReadableDatabase();
         // SELECT texto, autor, id
-        String[] columnasAConsultar = {"texto", "autor", "id"};
+        String[] columnasAConsultar = {"texto", "autor", "id","fecha"};
         Cursor cursor = baseDeDatos.query(
                 NOMBRE_TABLA,//from frasesfamosas
                 columnasAConsultar,
@@ -81,9 +83,10 @@ public class FrasesController {
             // texto, autor,id entonces el texto es 0, autor 1 e id es 2
             String textoObtenidoDeBD = cursor.getString(0);
             String autorObtenidoDeBD = cursor.getString(1);
+            String fechaObtenidoDeBD = cursor.getString(3);
             long idFrase = cursor.getLong(2);
             FraseFamosa fraseObtenidaDeBD = new FraseFamosa(textoObtenidoDeBD,
-                    autorObtenidoDeBD, idFrase);
+                    autorObtenidoDeBD, idFrase, fechaObtenidoDeBD);
             frases.add(fraseObtenidaDeBD);
         }while (cursor.moveToNext());
 

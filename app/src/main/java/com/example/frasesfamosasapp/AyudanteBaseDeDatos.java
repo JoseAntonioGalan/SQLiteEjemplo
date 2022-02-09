@@ -19,7 +19,7 @@ public class AyudanteBaseDeDatos extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "texto TEXT, autor TEXT)", NOMBRE_TABLA_FRASES));
+                "texto TEXT, autor TEXT, fecha TEXT)", NOMBRE_TABLA_FRASES));
     }
 
     @Override

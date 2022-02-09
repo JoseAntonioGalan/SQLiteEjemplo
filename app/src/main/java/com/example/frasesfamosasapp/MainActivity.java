@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("idFrase", fraseSeleccionada.getId());
                 intent.putExtra("textoFrase", fraseSeleccionada.getTexto());
                 intent.putExtra("autorFrase", fraseSeleccionada.getAutor());
+                intent.putExtra("fechaFrase", fraseSeleccionada.getFecha());
                 startActivity(intent);
             }
 
